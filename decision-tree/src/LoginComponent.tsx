@@ -51,7 +51,6 @@ export default function LoginComponent() {
                             <input
                                 type="email"
                                 className="form-control mt-1"
-                                placeholder="Enter email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
@@ -61,7 +60,6 @@ export default function LoginComponent() {
                             <input
                                 type="password"
                                 className="form-control mt-1"
-                                placeholder="Enter password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
@@ -93,7 +91,6 @@ export default function LoginComponent() {
                         <input
                             type="text"
                             className="form-control mt-1"
-                            placeholder="e.g Jane Doe"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                         />
@@ -103,7 +100,6 @@ export default function LoginComponent() {
                         <input
                             type="email"
                             className="form-control mt-1"
-                            placeholder="Email Address"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
@@ -113,7 +109,6 @@ export default function LoginComponent() {
                         <input
                             type="password"
                             className="form-control mt-1"
-                            placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />

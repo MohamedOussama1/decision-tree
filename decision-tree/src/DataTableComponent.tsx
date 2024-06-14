@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import './DataTable.css';
-import logoImage from "./assets/uiass.webp"
 import {getAllPatients} from "./auth.tsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAdd, faCoffee, faEdit, faPerson, faTrash, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faList, faSignOut, faTrash, faUser } from '@fortawesome/free-solid-svg-icons';
 
 // Define types for data
 interface UserData {
@@ -55,13 +54,41 @@ const DataTable: React.FC = () => {
         window.location.href = '/createPatient';
     }
 
-    return (<div>
+    return (<div className='back'>
         <div className='top-container'>
         <div className="top-bar">
             <div className="title">Liste des patients</div>
-            <div className="image-container">
-                <img src={logoImage} alt="Logo"/>
-            </div>
+            <div id="menu-top-right">
+      <ul>
+        <li>
+          <a
+            className="menu-btn"
+            href="/personal-info/{{user.id}}"
+          >
+            <FontAwesomeIcon icon={faUser}/>
+            <span>Profile</span>
+          </a>
+        </li>
+        <li>
+          <a
+            className="menu-btn"
+            href="/orders"
+          >
+            <FontAwesomeIcon icon={faList}/>
+            <span>Patients</span>
+          </a>
+        </li>
+        <li>
+          <a
+            className="menu-btn"
+            href="/cart"
+          >
+            <FontAwesomeIcon icon={faSignOut}/>
+            <span>Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
         </div>
 </div>
         <div className="container">

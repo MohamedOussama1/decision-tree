@@ -16,7 +16,7 @@
   box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
   padding-top: 30px;
   padding-bottom: 20px;
-  border-radius: 8px;
+  border-radius: 30px;
   background-color: #15717e;
 }
 
@@ -26,11 +26,12 @@
 }
 
 .Auth-form-title {
+  font-family: Arial, sans-serif;
   text-align: center;
   margin-bottom: 1em;
   font-size: 24px;
   color: white;
-  font-weight: 800;
+  font-weight: bold;
 }
 
 label {
@@ -42,3 +43,4 @@ label {
 a {
   color: white !important;
 }
+

@@ -2,7 +2,9 @@
 
 import React, {useState} from 'react';
 
+import "./CreatePatient.css"
 import "./index.css"
+import "bootstrap/dist/css/bootstrap.min.css"
 import {createPatient} from "./auth.tsx";
 
 function formatDate(date : any) {
@@ -50,106 +52,111 @@ const CreatePatient: React.FC = () => {
         }
     };
     return (
-        <div className="Auth-form-container">
-            <form className="Auth-form" onSubmit={handleSubmit}>
-                <div className="Auth-form-content">
-                    <h3 className="Auth-form-title">New Patient</h3>
-                    <div className="form-group mt-3">
-                        <label>First Name</label>
-                        <input
-                            type="text"
-                            name="firstName"
-                            className="form-control mt-1"
-                            placeholder="Enter first name"
-                            value={formData.firstName}
-                            onChange={handleChange}
-                        />
+        <div className="create-form-container">
+            <form className="create-form" onSubmit={handleSubmit}>
+                <div className="create-form-content">
+                    <h3 className="create-form-title">Nouveau Patient</h3>
+                    <div className='row'>
+                        <div className="form-group mt-3 col">
+                            <label>First Name</label>
+                            <input
+                                type="text"
+                                name="firstName"
+                                className="form-control mt-1"
+                                value={formData.firstName}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="form-group mt-3 col-md">
+                            <label>Last Name</label>
+                            <input
+                                type="text"
+                                name="lastName"
+                                className="form-control mt-1"
+                                value={formData.lastName}
+                                onChange={handleChange}
+                            />
+                        </div>
                     </div>
-                    <div className="form-group mt-3">
-                        <label>Last Name</label>
-                        <input
-                            type="text"
-                            name="lastName"
-                            className="form-control mt-1"
-                            placeholder="Enter last name"
-                            value={formData.lastName}
-                            onChange={handleChange}
-                        />
+                    <div className='row'>
+                        <div className="form-group mt-3 col">
+                            <label>Birth Date</label>
+                            <input
+                                type="date"
+                                name="birthDate"
+                                className="form-control mt-1"
+                                value={formData.birthDate}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="form-group mt-3 col">
+                            <label>Gender</label>
+                            <select
+                                name="gender"
+                                className="form-control mt-1"
+                                value={formData.gender}
+                                onChange={handleChange}
+                            >
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
                     </div>
-                    <div className="form-group mt-3">
-                        <label>City</label>
-                        <input
-                            type="text"
-                            name="city"
-                            className="form-control mt-1"
-                            placeholder="Enter city"
-                            value={formData.city}
-                            onChange={handleChange}
-                        />
+                    <div className='row'>
+                        <div className="form-group mt-3 col">
+                            <label>Email</label>
+                            <input
+                                type="email"
+                                name="email"
+                                className="form-control mt-1"
+                                value={formData.email}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="form-group mt-3 col">
+                            <label>Phone Number</label>
+                            <input
+                                type="tel"
+                                name="phoneNumber"
+                                className="form-control mt-1"
+                                value={formData.phoneNumber}
+                                onChange={handleChange}
+                            />
+                        </div>
                     </div>
-                    <div className="form-group mt-3">
-                        <label>Birth Date</label>
-                        <input
-                            type="date"
-                            name="birthDate"
-                            className="form-control mt-1"
-                            value={formData.birthDate}
-                            onChange={handleChange}
-                        />
+                    <div className='row'>
+                        <div className="form-group mt-3 col">
+                            <label>City</label>
+                            <input
+                                type="text"
+                                name="city"
+                                className="form-control mt-1"
+                                value={formData.city}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="form-group mt-3 col">
+                            <label>Address</label>
+                            <input
+                                type="text"
+                                name="address"
+                                className="form-control mt-1"
+                                value={formData.address}
+                                onChange={handleChange}
+                            />
+                        </div>
                     </div>
-                    <div className="form-group mt-3">
-                        <label>Gender</label>
-                        <select
-                            name="gender"
-                            className="form-control mt-1"
-                            value={formData.gender}
-                            onChange={handleChange}
-                        >
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
-                    </div>
-                    <div className="form-group mt-3">
-                        <label>Phone Number</label>
-                        <input
-                            type="tel"
-                            name="phoneNumber"
-                            className="form-control mt-1"
-                            placeholder="Enter phone number"
-                            value={formData.phoneNumber}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="form-group mt-3">
-                        <label>Email</label>
-                        <input
-                            type="email"
-                            name="email"
-                            className="form-control mt-1"
-                            placeholder="Enter email"
-                            value={formData.email}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="form-group mt-3">
-                        <label>Address</label>
-                        <input
-                            type="text"
-                            name="address"
-                            className="form-control mt-1"
-                            placeholder="Enter address"
-                            value={formData.address}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="d-grid gap-2 mt-3">
-                        <button type="submit" className="btn btn-primary">
-                            Submit
-                        </button>
+                    <div className='row'>
+                        <div className="w-100 mt-3 col">
+                            <button type="submit" className="btn btn-primary w-100">
+                                Submit
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </form>
-        </div>
+
+            </form >
+        </div >
     )
         ;
 }
