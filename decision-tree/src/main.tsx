@@ -10,11 +10,17 @@ import SurveyComponent from "./SurveyComponent.tsx";
 import LoginComponent from "./LoginComponent.tsx";
 import DataTableComponent from "./DataTableComponent.tsx";
 import CreatePatientComponent from "./CreatePatientComponent.tsx";
+import SurveyResultComponent from './SurveyResultComponent.tsx';
+import UpdatePatientComponent from './UpdatePatientComponent.tsx';
 
 const router = createBrowserRouter([
     {
         path: "/survey",
         element: <SurveyComponent></SurveyComponent>,
+    },
+    {
+        path: "/survey-result",
+        element: <SurveyResultComponent></SurveyResultComponent>,
     },
     {
         path: "/patients",
@@ -23,6 +29,10 @@ const router = createBrowserRouter([
     {
         path: "/createPatient",
         element: <CreatePatientComponent></CreatePatientComponent>,
+    },
+    {
+        path: "/updatePatient/:id",
+        element: <UpdatePatientComponent></UpdatePatientComponent>,
     },
     {
         path: "/login",

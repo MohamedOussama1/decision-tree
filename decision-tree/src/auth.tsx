@@ -2,7 +2,7 @@ import PocketBase from 'pocketbase';
 
 export const pb = new PocketBase('http://127.0.0.1:8090');
 
-export var currentUser = pb.authStore.model;
+export let currentUser = pb.authStore.model;
 
 
 pb.authStore.onChange((auth) =>{
@@ -44,6 +44,19 @@ export async function getAllPatients(){
     });
 }
 
+export async function getPatientById(id : string) : Promise<FormData> {
+    return await pb.collection('patient').getOne(
+        id, {expand : 'firstName, lastName, city, birthDate, gender, phoneNumber, email, address, entryDate'});
+}
+
 export async function createPatient(patientData : any) {
     return await pb.collection('patient').create(patientData);
+}
+
+export async function updatePatient(id : string, patientData : any){
+    return await pb.collection('patient').update(id, patientData);
+}
+
+export async function deletePatient(id : string){
+    return await pb.collection('patient').delete(id);
 }

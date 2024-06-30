@@ -1,30 +1,21 @@
 import React, {useEffect, useState} from 'react';
 import './DataTable.css';
-import {getAllPatients} from "./auth.tsx";
+import {deletePatient, getAllPatients} from "./auth.tsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faList, faSignOut, faTrash, faUser } from '@fortawesome/free-solid-svg-icons';
 
 // Define types for data
 interface UserData {
+    id : string;
     firstName: string;
     lastName: string;
     entryDate: string;
 }
 
 const DataTable: React.FC = () => {
-    // Sample data
-  /* const initialData: UserData[] = [
-    {firstName: 'Saad', lastName: 'Ouahidi', entryDate: '2024-04-26'},
-    {firstName: 'Adil', lastName: 'Amellak', entryDate: '2024-04-25'}
-    ];
-   */
-
     const initialData: UserData[] = [
-        {firstName: 'Saad', lastName: 'Ouahidi', entryDate: '2024-04-26'},
-        {firstName: 'Adil', lastName: 'Amellak', entryDate: '2023-07-01'},
-        {firstName: 'Adam', lastName: 'Hatim', entryDate: '2022-07-31'},
-        {firstName: 'Karim', lastName: 'Bennour', entryDate: '2023-12-25'},
-        {firstName: 'Farid', lastName: 'Debbagh', entryDate: '2024-04-25'}
+        {id : "aa", firstName: 'Saad', lastName: 'Ouahidi', entryDate: '2024-04-26'},
+        {id : "aaa", firstName: 'Adil', lastName: 'Amellak', entryDate: '2023-07-01'},
     ]
 
     useEffect(() => {
@@ -32,13 +23,12 @@ const DataTable: React.FC = () => {
             try {
                 const response = await getAllPatients();
                 const patients = response.items.map((item: any) => {
-                    console.log(item);
-                    return {firstName: item.firstName,
+                    return {id : item.id,
+                        firstName: item.firstName,
                         lastName: item.lastName,
                         entryDate: item.entryDate,
                 }
             })
-                console.log(patients);
                 setData(patients);
             } catch (error) {
                 console.error('Error fetching patients:', error);
@@ -53,6 +43,20 @@ const DataTable: React.FC = () => {
     function handleCreatePatient() {
         window.location.href = '/createPatient';
     }
+
+  async function handleProfileCLick(id : string){
+    console.log(id);
+  }
+
+  function handleUpdateClick(id : string){
+    window.location.href = '/updatePatient/' + id;
+  }
+
+  async function handleDeleteClick(id : string, index : number){
+    const response = await deletePatient(id);
+    if (response)
+      setData(data => data.filter((_,i) => i != index))
+  }
 
     return (<div className='back'>
         <div className='top-container'>
@@ -111,13 +115,13 @@ const DataTable: React.FC = () => {
                         <td>{item.firstName}</td>
                         <td>{item.entryDate}</td>
                         <td>
-                            <button className='btn-icon btn-user' title='profile'>
+                            <button className='btn-icon btn-user' title='profile' onClick={() => handleProfileCLick(item.id)}>
                                 <FontAwesomeIcon icon={faUser}/>
                             </button>
-                            <button className='btn-icon btn-edit' title='modifier'>
+                            <button className='btn-icon btn-edit' title='modifier' onClick={() => handleUpdateClick(item.id)}>
                                 <FontAwesomeIcon icon={faEdit}/>
                             </button>
-                            <button className='btn-icon btn-trash' title='supprimer'>
+                            <button className='btn-icon btn-trash' title='supprimer' onClick={() => handleDeleteClick(item.id, index)}>
                                 <FontAwesomeIcon icon={faTrash}/>
                             </button>
 

@@ -1,11 +1,13 @@
-// CreatePatient.tsx
 
-import React, {useState} from 'react';
+// UpdatePatient.tsx
+
+import React, {useEffect, useState} from 'react';
 
 import "./CreatePatient.css"
 import "./index.css"
 import "bootstrap/dist/css/bootstrap.min.css"
-import {createPatient} from "./auth.tsx";
+import {getPatientById, updatePatient} from "./auth.tsx";
+import { useParams } from 'react-router-dom';
 
 function formatDate(date : any) {
     const year = date.getUTCFullYear();
@@ -19,8 +21,38 @@ function formatDate(date : any) {
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds}Z`;
 }
 
-const CreatePatient: React.FC = () => {
-    const [formData, setFormData] = useState({
+interface Patient {
+        firstName: string;
+        lastName: string;
+        city: string;
+        birthDate: string;
+        gender: 'male' | 'female';
+        phoneNumber: string;
+        email: string;
+        address: string;
+        entryDate: string;
+}
+
+const UpdatePatient: React.FC = () => {
+    // get id from url
+    const { id } = useParams();
+    useEffect(() => {
+        async function updateFormData() {
+            try {
+                // update form data
+                if (id) {
+                    const patient : Patient = await getPatientById(id);
+                    setPatient(patient);
+                }
+            } catch (error) {
+                console.error('Error fetching patients:', error);
+            }
+        }
+        updateFormData().then(() => console.log("useEffect"));
+    }, []);
+
+
+    const [patient, setPatient] = useState<Patient>({
         firstName: '',
         lastName: '',
         city: '',
@@ -34,18 +66,18 @@ const CreatePatient: React.FC = () => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        setPatient({ ...patient, [name]: value });
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            console.log(formData);
-            formData["birthDate"] = formatDate(new Date(formData["birthDate"]));
-            formData["entryDate"] = formatDate(new Date(formData["entryDate"]));
-            await createPatient(formData);
-            alert('Patient created successfully!');
-            window.location.href = "http://localhost:5173/patients"
+            if (id){
+                const response = await updatePatient(id, patient);
+                console.log(response)
+                alert('Patient updated successfully!');
+                window.location.href = "http://localhost:5173/patients"
+            }
             // Optionally, you can redirect to another page or clear the form
         } catch (error) {
             console.error('Error creating patient:', error);
@@ -56,7 +88,7 @@ const CreatePatient: React.FC = () => {
         <div className="create-form-container">
             <form className="create-form" onSubmit={handleSubmit}>
                 <div className="create-form-content">
-                    <h3 className="create-form-title">Nouveau Patient</h3>
+                    <h3 className="create-form-title">Modifier Patient</h3>
                     <div className='row'>
                         <div className="form-group mt-3 col">
                             <label>First Name</label>
@@ -64,7 +96,7 @@ const CreatePatient: React.FC = () => {
                                 type="text"
                                 name="firstName"
                                 className="form-control mt-1"
-                                value={formData.firstName}
+                                value={patient.firstName}
                                 onChange={handleChange}
                             />
                         </div>
@@ -74,7 +106,7 @@ const CreatePatient: React.FC = () => {
                                 type="text"
                                 name="lastName"
                                 className="form-control mt-1"
-                                value={formData.lastName}
+                                value={patient.lastName}
                                 onChange={handleChange}
                             />
                         </div>
@@ -86,7 +118,7 @@ const CreatePatient: React.FC = () => {
                                 type="date"
                                 name="birthDate"
                                 className="form-control mt-1"
-                                value={formData.birthDate}
+                                value={patient.birthDate}
                                 onChange={handleChange}
                             />
                         </div>
@@ -95,7 +127,7 @@ const CreatePatient: React.FC = () => {
                             <select
                                 name="gender"
                                 className="form-control mt-1"
-                                value={formData.gender}
+                                value={patient.gender}
                                 onChange={handleChange}
                             >
                                 <option value="male">Male</option>
@@ -110,7 +142,7 @@ const CreatePatient: React.FC = () => {
                                 type="email"
                                 name="email"
                                 className="form-control mt-1"
-                                value={formData.email}
+                                value={patient.email}
                                 onChange={handleChange}
                             />
                         </div>
@@ -120,7 +152,7 @@ const CreatePatient: React.FC = () => {
                                 type="tel"
                                 name="phoneNumber"
                                 className="form-control mt-1"
-                                value={formData.phoneNumber}
+                                value={patient.phoneNumber}
                                 onChange={handleChange}
                             />
                         </div>
@@ -132,7 +164,7 @@ const CreatePatient: React.FC = () => {
                                 type="text"
                                 name="city"
                                 className="form-control mt-1"
-                                value={formData.city}
+                                value={patient.city}
                                 onChange={handleChange}
                             />
                         </div>
@@ -142,7 +174,7 @@ const CreatePatient: React.FC = () => {
                                 type="text"
                                 name="address"
                                 className="form-control mt-1"
-                                value={formData.address}
+                                value={patient.address}
                                 onChange={handleChange}
                             />
                         </div>
@@ -162,4 +194,4 @@ const CreatePatient: React.FC = () => {
         ;
 }
 
-export default CreatePatient;
+export default UpdatePatient;
