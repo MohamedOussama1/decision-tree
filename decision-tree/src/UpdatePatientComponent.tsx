@@ -21,18 +21,6 @@ function formatDate(date : any) {
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds}Z`;
 }
 
-interface Patient {
-        firstName: string;
-        lastName: string;
-        city: string;
-        birthDate: string;
-        gender: 'male' | 'female';
-        phoneNumber: string;
-        email: string;
-        address: string;
-        entryDate: string;
-}
-
 const UpdatePatient: React.FC = () => {
     // get id from url
     const { id } = useParams();

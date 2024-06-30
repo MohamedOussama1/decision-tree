@@ -15,11 +15,11 @@ import UpdatePatientComponent from './UpdatePatientComponent.tsx';
 
 const router = createBrowserRouter([
     {
-        path: "/survey",
+        path: "/survey/:id",
         element: <SurveyComponent></SurveyComponent>,
     },
     {
-        path: "/survey-result",
+        path: "/survey-result/:id",
         element: <SurveyResultComponent></SurveyResultComponent>,
     },
     {

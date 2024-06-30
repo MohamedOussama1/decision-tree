@@ -46,6 +46,7 @@ const DataTable: React.FC = () => {
 
   async function handleProfileCLick(id : string){
     console.log(id);
+    window.location.href = "http://localhost:5173/survey/" + id;
   }
 
   function handleUpdateClick(id : string){
