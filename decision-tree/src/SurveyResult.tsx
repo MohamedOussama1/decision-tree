@@ -1,8 +1,9 @@
 export default interface Result {
-    patientId : string | undefined;
+    patient : string | undefined;
     date : string;
-    probabilities : {'A' : number, 'B' : number, 'C' : number, 'D' : number}
-    result : 'A' | 'B' | 'C' | 'D';
-    observation : string;
-    data : string;
+    probabilities : {a : number, b : number, c : number, d : number}
+    messages : {a : string, b : string, c : string, d : string}
+    result : string;
+    feedback? : string;
+    rating? : number;
 }

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
-import { getPatientById } from './auth';
+import { useLocation, useParams } from 'react-router-dom';
+import { addSurveyResult, getPatientById, getSurveyResultByPatientId, getSurveyResultsById } from './auth';
 import Patient from './Patient';
 import Result from './SurveyResult';
 import './SurveyResult.css'
 import './DataTable.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faList, faSignOut, faTrash, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faList, faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
 
 function formatDate(date : Date) {
     const year = date.getUTCFullYear();
@@ -20,6 +20,7 @@ function formatDate(date : Date) {
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds}Z`;
 }
 
+
 const SurveyResult : React.FC = () => {
     const { id } = useParams();
     useEffect(() => {
@@ -29,6 +30,16 @@ const SurveyResult : React.FC = () => {
                 if (id) {
                     const patient : Patient = await getPatientById(id);
                     setPatient(patient);
+                    const response = await getSurveyResultByPatientId(id);
+                    const item = response.items[0];
+                    const surveyResult = {
+                        patient: item.patient,
+                        date: item.date,
+                        result: item.result,
+                        probabilities: item.probabilities,
+                        messages: item.messages
+                    };
+                    setSurveyResult(surveyResult);
                 }
             } catch (error) {
                 console.error('Error fetching patients:', error);
@@ -43,13 +54,12 @@ const SurveyResult : React.FC = () => {
   }
 
 
-    const [SurveyResult, setSurveyResult] = useState<Result>({
-      patientId: id,
+    const [surveyResult, setSurveyResult] = useState<Result>({
+      patient: id,
       date: formatDate(new Date()),
-      observation: 'observation',
-      result: 'A',
-      probabilities: { 'A': 1, 'B': 0, 'C': 0, 'D': 0 },
-      data : ''
+      result: '',
+      probabilities: { a: 0, b: 0, c: 0, d: 0 },
+      messages : {a : '', b : '', c : '', d : ''}
       }
     );
 
@@ -71,15 +81,6 @@ const SurveyResult : React.FC = () => {
             <div className="title">Résultats du recueil</div>
             <div id="menu-top-right">
               <ul>
-                <li>
-                  <a
-                    className="menu-btn"
-                    href="/personal-info/{{user.id}}"
-                  >
-                    <FontAwesomeIcon icon={faUser} />
-                    <span>Profile</span>
-                  </a>
-                </li>
                 <li>
                   <a
                     className="menu-btn"
@@ -112,13 +113,19 @@ const SurveyResult : React.FC = () => {
                     <strong>Patient:</strong> {patient.firstName + " " + patient.lastName}
                   </p>
                   <p className="card-text">
-                    <strong>Date:</strong> {SurveyResult.date}
+                    <strong>Date:</strong> {surveyResult.date}
                   </p>
                   <p className="card-text">
-                    <strong>Résultat:</strong> {SurveyResult.result}
+                    <strong>PAMP Conv:</strong> {surveyResult.probabilities.a + " " + surveyResult.messages.a} 
                   </p>
                   <p className="card-text">
-                    <strong>Observation:</strong> {SurveyResult.observation}
+                    <strong>PAMP Comp:</strong> {surveyResult.probabilities.b + " " + surveyResult.messages.b} 
+                  </p>
+                  <p className="card-text">
+                    <strong>PAMPSR:</strong> {surveyResult.probabilities.c + " " + surveyResult.messages.c} 
+                  </p>
+                  <p className="card-text">
+                    <strong>PAMPSI:</strong> {surveyResult.probabilities.d + " " + surveyResult.messages.d} 
                   </p>
                     <button className='btn-icon btn-profile' title='profile' onClick={() => handleProfileCLick(patient.id)}>
                       <FontAwesomeIcon icon={faUser} />

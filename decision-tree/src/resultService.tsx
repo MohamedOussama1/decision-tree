@@ -10,18 +10,17 @@ enum choices {
 
 function updateProba(properties : choices[], message : string){
     for (const prop of properties) {
-        messages[prop] = messages[prop] ? message : messages[prop];
+        messages[prop] = message;
         probabilities[prop] = -1000;
 }
 
 }
 export default function calculateResult(data : any){
-    const surveyResult = {result : "res", observation : "obs"}
     if (data.implication == 'Item 1'){
         updateProba([choices.b, choices.c, choices.d], "Implication financière moyenne");
     }
     else
-        probabilities.a = -1000;
+        updateProba([choices.a], "Implication financière élevé");
     if (data.hmd == 'Item 1'){
         updateProba([choices.b, choices.c, choices.d], "Hygiène, degré de motivation et disponibilité: Moyen");
     }
@@ -292,5 +291,6 @@ export default function calculateResult(data : any){
         }
     }
     console.log(probabilities);
+    console.log(messages);
     return {probabilities, messages};
 }

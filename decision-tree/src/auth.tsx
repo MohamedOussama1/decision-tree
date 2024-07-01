@@ -74,3 +74,10 @@ export async function getSurveyResultsById(patientId : string){
 export async function deleteSurveyResult(id : string){
     return await pb.collection('surveyResult').delete(id);
 }
+
+export async function getSurveyResultByPatientId(patientId : string){
+    return await pb.collection('surveyResult').getList(1, 1, {
+        filter: `patient='${patientId}'`,
+        sort : '-created',
+    })
+}

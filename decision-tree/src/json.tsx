@@ -851,7 +851,8 @@ export const json = {
     ],
     "title": "Données complémentaires"
    }
-  ]
+  ],
+  "showCompletedPage": false
  }
 
 export const themeJson = {
