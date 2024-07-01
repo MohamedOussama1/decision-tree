@@ -6,7 +6,7 @@ import Result from './SurveyResult';
 import './SurveyResult.css'
 import './DataTable.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faList, faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faList, faSignOut, faTrash, faUser } from '@fortawesome/free-solid-svg-icons';
 
 function formatDate(date : Date) {
     const year = date.getUTCFullYear();
@@ -36,6 +36,11 @@ const SurveyResult : React.FC = () => {
         }
         updateFormData().then(() => console.log("useEffect"));
     }, []);
+
+  async function handleProfileCLick(id? : string){
+    if (id)
+    window.location.href = "http://localhost:5173/profile/" + id;
+  }
 
 
     const [SurveyResult, setSurveyResult] = useState<Result>({
@@ -115,6 +120,9 @@ const SurveyResult : React.FC = () => {
                   <p className="card-text">
                     <strong>Observation:</strong> {SurveyResult.observation}
                   </p>
+                    <button className='btn-icon btn-profile' title='profile' onClick={() => handleProfileCLick(patient.id)}>
+                      <FontAwesomeIcon icon={faUser} />
+                    </button>
                 </div>
               </div>
             </div>

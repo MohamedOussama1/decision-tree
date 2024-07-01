@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import './DataTable.css';
-import {deleteSurveyResult, getPatientById, getSurveyResultsById} from "./auth.tsx";
+import {deletePatient, deleteSurveyResult, getPatientById, getSurveyResultsById} from "./auth.tsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faList, faSignOut, faTrash, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faList, faSignOut, faTrash, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
 import Patient from './Patient.tsx';
 
@@ -53,6 +53,19 @@ const DataTable: React.FC = () => {
     const response = await deleteSurveyResult(id);
     if (response)
       setData(data => data.filter((_,i) => i != index))
+  }
+
+  function handleUpdateClick(id? : string){
+    if (id)
+        window.location.href = '/updatePatient/' + id;
+  }
+
+  async function handleDeletePatientClick(id? : string){
+    if (id){
+        const response = await deletePatient(id);
+        if (response)
+            window.location.href = "http://localhost:5173/patients";
+    }
   }
 
     return (<div className='back'>
@@ -124,6 +137,12 @@ const DataTable: React.FC = () => {
                             <p className="card-text">
                                 <strong>Addresse:</strong> {patient?.address}
                             </p>
+                    <button className='btn-icon btn-edit' title='modifier' onClick={() => handleUpdateClick(patient?.id)}>
+                      <FontAwesomeIcon icon={faEdit} />
+                    </button>
+                    <button className='btn-icon btn-trash' title='supprimer' onClick={() => handleDeletePatientClick(patient?.id)}>
+                      <FontAwesomeIcon icon={faTrash} />
+                    </button>
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,7 @@ export const json = {
     "elements": [
      {
       "type": "radiogroup",
-      "name": "Implication financière",
+      "name": "implication",
       "title": "Implication financière",
       "isRequired": true,
       "choices": [
@@ -28,7 +28,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Hygiène, degré de motivation et disponibilité",
+      "name": "hmd",
       "title": "Hygiène, degré de motivation et disponibilité",
       "isRequired": true,
       "choices": [
@@ -48,7 +48,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Habitudes alcolo-tabagiques",
+      "name": "hat",
       "title": "Habitudes alcolo-tabagiques",
       "isRequired": true,
       "choices": [
@@ -70,7 +70,7 @@ export const json = {
     "elements": [
      {
       "type": "boolean",
-      "name": "Présence de pathologies",
+      "name": "pathologies",
       "title": "Présence de pathologies",
       "isRequired": true,
       "labelTrue": "Oui",
@@ -78,8 +78,8 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "CI",
-      "visibleIf": "{Présence de pathologies} = true",
+      "name": "ci",
+      "visibleIf": "{pathologies} = true",
       "title": "CI",
       "isRequired": true,
       "choices": [
@@ -95,8 +95,8 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Ci absolues",
-      "visibleIf": "{CI} = 'Item 3' and {Présence de pathologies} = true",
+      "name": "ciabs",
+      "visibleIf": "{ci} = 'Item 3' and {pathologies} = true",
       "title": "CI absolues",
       "isRequired": true,
       "choices": [
@@ -112,7 +112,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Dent support",
+      "name": "dsupport",
       "title": "Dent support",
       "choices": [
        {
@@ -131,8 +131,8 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Morphologie coronaire",
-      "visibleIf": "{Dent support} = 'Item 2'",
+      "name": "mcoronaire",
+      "visibleIf": "{dsupport} = 'Item 2'",
       "title": "Morphologie coronaire",
       "choices": [
        {
@@ -151,8 +151,8 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Morphologie coronaire Défavorable",
-      "visibleIf": "{Morphologie coronaire} = 'Item 3' and {Dent support} = 'Item 2'",
+      "name": "mcoronairedefavorable",
+      "visibleIf": "{mcoronaire} = 'Item 3' and {dsupport} = 'Item 2'",
       "title": "Défavorable",
       "choices": [
        {
@@ -167,8 +167,8 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Dent support Délabrée",
-      "visibleIf": "{Dent support} = 'Item 3'",
+      "name": "dsupportdelabree",
+      "visibleIf": "{dsupport} = 'Item 3'",
       "title": "Délabrée",
       "choices": [
        {
@@ -191,7 +191,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "État parodontal",
+      "name": "etatparodontal",
       "title": {
        "default": "Délabrée",
        "fr": "État parodontal"
@@ -215,7 +215,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Morphologie alvéolaire au tour de la dent support",
+      "name": "malveolaire",
       "title": {
        "default": "Délabrée",
        "fr": "Morphologie alvéolaire au tour de la dent support"
@@ -239,7 +239,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Structures ostéomuqueues",
+      "name": "osteomuqueuses",
       "title": {
        "default": "Délabrée",
        "fr": "Structures ostéomuqueues"
@@ -263,7 +263,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Structures périphériques Zone neutre",
+      "name": "speriphzneutre",
       "title": {
        "default": "Délabrée",
        "fr": "Structures périphériques Zone neutre"
@@ -287,7 +287,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "ATM",
+      "name": "atm",
       "title": {
        "default": "Délabrée",
        "fr": "ATM"
@@ -311,7 +311,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Zone de retrait",
+      "name": "zretrait",
       "title": {
        "default": "Délabrée",
        "fr": "Zone de retrait"
@@ -335,7 +335,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Dent intercalaire isolée",
+      "name": "disolee",
       "title": {
        "default": "Délabrée",
        "fr": "Dent intercalaire isolée"
@@ -359,7 +359,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Classes  de K.A avec modification  antérieure",
+      "name": "ka",
       "title": {
        "default": "Délabrée",
        "fr": "Classes  de K.A avec modification  antérieure"
@@ -383,7 +383,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Malpositions et diastèmes",
+      "name": "maldia",
       "title": {
        "default": "Délabrée",
        "fr": "Malpositions et diastèmes"
@@ -407,7 +407,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Ouverture buccale",
+      "name": "ouvbuccale",
       "title": {
        "default": "Délabrée",
        "fr": "Ouverture buccale"
@@ -437,7 +437,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "DYO",
+      "name": "dyo",
       "title": {
        "default": "Délabrée",
        "fr": "DYO"
@@ -467,8 +467,8 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Meulage amélaire",
-      "visibleIf": "{DYO} = 'Item 3'",
+      "name": "mamelaire",
+      "visibleIf": "{dyo} = 'Item 3'",
       "title": {
        "default": "Délabrée",
        "fr": "Meulage amélaire"
@@ -492,7 +492,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Dim",
+      "name": "dim",
       "title": {
        "default": "Délabrée",
        "fr": "Dim"
@@ -516,7 +516,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Arcade antagoniste",
+      "name": "antagoniste",
       "title": {
        "default": "Délabrée",
        "fr": "Arcade antagoniste"
@@ -555,7 +555,7 @@ export const json = {
     "elements": [
      {
       "type": "radiogroup",
-      "name": "Morphologie radiculaire",
+      "name": "mradiculaire",
       "title": {
        "fr": "Morphologie radiculaire"
       },
@@ -576,7 +576,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "CC/RC dent support",
+      "name": "ccrc",
       "title": {
        "fr": "CC/RC dent support"
       },
@@ -603,7 +603,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Volume osseux",
+      "name": "vosseux",
       "title": {
        "fr": "Volume osseux"
       },
@@ -624,7 +624,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Qualité osseuse",
+      "name": "qosseuse",
       "title": {
        "fr": "Qualité osseuse"
       },
@@ -645,7 +645,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Plan d'occlusion",
+      "name": "pocclusion",
       "title": {
        "fr": "Plan d'occlusion"
       },
@@ -666,8 +666,8 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Type de peturbations",
-      "visibleIf": "{Plan d'occlusion} = 'Item 2'",
+      "name": "tperturbations",
+      "visibleIf": "{pocclusion} = 'Item 2'",
       "title": {
        "fr": "Type de peturbations"
       },
@@ -688,8 +688,8 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "DDF",
-      "visibleIf": "{Plan d'occlusion} = 'Item 2' and {Type de peturbations} = 'Item 2'",
+      "name": "ddf",
+      "visibleIf": "{pocclusion} = 'Item 2' and {tperturbations} = 'Item 2'",
       "title": {
        "fr": "DDF"
       },
@@ -710,7 +710,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Espace prothétique",
+      "name": "eprothetique",
       "title": {
        "fr": "Espace prothétique"
       },
@@ -731,7 +731,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Axe inter-crêtes",
+      "name": "aic",
       "title": {
        "fr": "Axe inter-crêtes"
       },
@@ -752,7 +752,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "question36",
+      "name": "zdr",
       "title": {
        "fr": "Zone de retrait"
       },
@@ -779,8 +779,8 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Zone de retrait Défavorable",
-      "visibleIf": "{question36} = 'Item 3'",
+      "name": "zdrdefavorable",
+      "visibleIf": "{zdr} = 'Item 3'",
       "title": {
        "fr": "Défavorable"
       },
@@ -801,7 +801,7 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Surfaces de guidage et de calage",
+      "name": "sgc",
       "title": {
        "fr": "Surfaces de guidage et de calage"
       },
@@ -828,8 +828,8 @@ export const json = {
      },
      {
       "type": "radiogroup",
-      "name": "Surfaces de guidage et de calage Défavorables",
-      "visibleIf": "{Surfaces de guidage et de calage} = 'Item 3'",
+      "name": "sgcdefav",
+      "visibleIf": "{sgc} = 'Item 3'",
       "title": {
        "fr": "Défavorables"
       },

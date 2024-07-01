@@ -59,7 +59,7 @@ const CreatePatient: React.FC = () => {
                     <h3 className="create-form-title">Nouveau Patient</h3>
                     <div className='row'>
                         <div className="form-group mt-3 col">
-                            <label>First Name</label>
+                            <label>Prénom</label>
                             <input
                                 type="text"
                                 name="firstName"
@@ -69,7 +69,7 @@ const CreatePatient: React.FC = () => {
                             />
                         </div>
                         <div className="form-group mt-3 col-md">
-                            <label>Last Name</label>
+                            <label>Nom</label>
                             <input
                                 type="text"
                                 name="lastName"
@@ -81,7 +81,7 @@ const CreatePatient: React.FC = () => {
                     </div>
                     <div className='row'>
                         <div className="form-group mt-3 col">
-                            <label>Birth Date</label>
+                            <label>Date de naissance</label>
                             <input
                                 type="date"
                                 name="birthDate"
@@ -91,7 +91,7 @@ const CreatePatient: React.FC = () => {
                             />
                         </div>
                         <div className="form-group mt-3 col">
-                            <label>Gender</label>
+                            <label>Genre</label>
                             <select
                                 name="gender"
                                 className="form-control mt-1"
@@ -115,7 +115,7 @@ const CreatePatient: React.FC = () => {
                             />
                         </div>
                         <div className="form-group mt-3 col">
-                            <label>Phone Number</label>
+                            <label>Téléphone</label>
                             <input
                                 type="tel"
                                 name="phoneNumber"
@@ -127,7 +127,7 @@ const CreatePatient: React.FC = () => {
                     </div>
                     <div className='row'>
                         <div className="form-group mt-3 col">
-                            <label>City</label>
+                            <label>Ville</label>
                             <input
                                 type="text"
                                 name="city"
@@ -137,7 +137,7 @@ const CreatePatient: React.FC = () => {
                             />
                         </div>
                         <div className="form-group mt-3 col">
-                            <label>Address</label>
+                            <label>Addresse</label>
                             <input
                                 type="text"
                                 name="address"
