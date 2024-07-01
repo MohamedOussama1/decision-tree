@@ -77,15 +77,6 @@ const DataTable: React.FC = () => {
         <li>
           <a
             className="menu-btn"
-            href="/personal-info/{{user.id}}"
-          >
-            <FontAwesomeIcon icon={faUser}/>
-            <span>Profile</span>
-          </a>
-        </li>
-        <li>
-          <a
-            className="menu-btn"
             href="/patients"
           >
             <FontAwesomeIcon icon={faList}/>

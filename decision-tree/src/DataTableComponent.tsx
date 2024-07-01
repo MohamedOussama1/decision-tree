@@ -59,80 +59,71 @@ const DataTable: React.FC = () => {
       setData(data => data.filter((_,i) => i != index))
   }
 
-    return (<div className='back'>
+    return (
+      <div className='back'>
         <div className='top-container'>
-        <div className="top-bar">
+          <div className="top-bar">
             <div className="title">Liste des patients</div>
             <div id="menu-top-right">
-      <ul>
-        <li>
-          <a
-            className="menu-btn"
-            href="/personal-info/{{user.id}}"
-          >
-            <FontAwesomeIcon icon={faUser}/>
-            <span>Profile</span>
-          </a>
-        </li>
-        <li>
-          <a
-            className="menu-btn"
-            href="/patients"
-          >
-            <FontAwesomeIcon icon={faList}/>
-            <span>Patients</span>
-          </a>
-        </li>
-        <li>
-          <a
-            className="menu-btn"
-            href="/logout"
-          >
-            <FontAwesomeIcon icon={faSignOut}/>
-            <span>Logout</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-        </div>
-</div>
-        <div className="container">
-            <div className="button-container">
-                <button className="new-patient-button" onClick={handleCreatePatient}>+ Nouveau patient</button>
+              <ul>
+                <li>
+                  <a
+                    className="menu-btn"
+                    href="/patients"
+                  >
+                    <FontAwesomeIcon icon={faList} />
+                    <span>Patients</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="menu-btn"
+                    href="/logout"
+                  >
+                    <FontAwesomeIcon icon={faSignOut} />
+                    <span>Logout</span>
+                  </a>
+                </li>
+              </ul>
             </div>
-            <table>
-                <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Date d'entrée</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {data.map((item, index) => (
-                    <tr key={index}>
-                        <td>{item.lastName}</td>
-                        <td>{item.firstName}</td>
-                        <td>{item.entryDate}</td>
-                        <td>
-                            <button className='btn-icon btn-user' title='profile' onClick={() => handleProfileCLick(item.id)}>
-                                <FontAwesomeIcon icon={faUser}/>
-                            </button>
-                            <button className='btn-icon btn-edit' title='modifier' onClick={() => handleUpdateClick(item.id)}>
-                                <FontAwesomeIcon icon={faEdit}/>
-                            </button>
-                            <button className='btn-icon btn-trash' title='supprimer' onClick={() => handleDeleteClick(item.id, index)}>
-                                <FontAwesomeIcon icon={faTrash}/>
-                            </button>
-
-                        </td>
-                    </tr>
-                ))}
-                </tbody>
-            </table>
+          </div>
         </div>
-    </div>);
+        <div className="container">
+          <div className="button-container">
+            <button className="new-patient-button" onClick={handleCreatePatient}>+ Nouveau patient</button>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Date d'entrée</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.lastName}</td>
+                  <td>{item.firstName}</td>
+                  <td>{item.entryDate}</td>
+                  <td>
+                    <button className='btn-icon btn-user' title='profile' onClick={() => handleProfileCLick(item.id)}>
+                      <FontAwesomeIcon icon={faUser} />
+                    </button>
+                    <button className='btn-icon btn-edit' title='modifier' onClick={() => handleUpdateClick(item.id)}>
+                      <FontAwesomeIcon icon={faEdit} />
+                    </button>
+                    <button className='btn-icon btn-trash' title='supprimer' onClick={() => handleDeleteClick(item.id, index)}>
+                      <FontAwesomeIcon icon={faTrash} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>);
 }
 
 export default DataTable;
