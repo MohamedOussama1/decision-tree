@@ -1,4 +1,4 @@
-interface Patient {
+export default interface Patient {
     firstName: string;
     lastName: string;
     city: string;

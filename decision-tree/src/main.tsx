@@ -12,8 +12,13 @@ import DataTableComponent from "./DataTableComponent.tsx";
 import CreatePatientComponent from "./CreatePatientComponent.tsx";
 import SurveyResultComponent from './SurveyResultComponent.tsx';
 import UpdatePatientComponent from './UpdatePatientComponent.tsx';
+import PatientProfileComponent from './PatientProfileComponent.tsx';
 
 const router = createBrowserRouter([
+    {
+        path: "/profile/:id",
+        element: <PatientProfileComponent></PatientProfileComponent>,
+    },
     {
         path: "/survey/:id",
         element: <SurveyComponent></SurveyComponent>,

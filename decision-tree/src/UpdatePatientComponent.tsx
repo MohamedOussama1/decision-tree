@@ -8,8 +8,9 @@ import "./index.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 import {getPatientById, updatePatient} from "./auth.tsx";
 import { useParams } from 'react-router-dom';
+import Patient from './Patient.tsx';
 
-function formatDate(date : any) {
+function formatDate(date : Date) {
     const year = date.getUTCFullYear();
     const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Months are zero-indexed
     const day = String(date.getUTCDate()).padStart(2, '0');

@@ -44,7 +44,7 @@ export async function getAllPatients(){
     });
 }
 
-export async function getPatientById(id : string) : Promise<FormData> {
+export async function getPatientById(id : string) : Promise<> {
     return await pb.collection('patient').getOne(
         id, {expand : 'firstName, lastName, city, birthDate, gender, phoneNumber, email, address, entryDate'});
 }
@@ -59,4 +59,18 @@ export async function updatePatient(id : string, patientData : any){
 
 export async function deletePatient(id : string){
     return await pb.collection('patient').delete(id);
+}
+
+export async function addSurveyResult(surveyData : any){
+    return await pb.collection('surveyResult').create(surveyData);
+}
+
+export async function getSurveyResultsById(patientId : string){
+    return await pb.collection('surveyResult').getList(1, 50, {
+        filter: `patient='${patientId}'`,
+    });
+}
+
+export async function deleteSurveyResult(id : string){
+    return await pb.collection('surveyResult').delete(id);
 }

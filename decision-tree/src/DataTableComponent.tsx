@@ -46,7 +46,7 @@ const DataTable: React.FC = () => {
 
   async function handleProfileCLick(id : string){
     console.log(id);
-    window.location.href = "http://localhost:5173/survey/" + id;
+    window.location.href = "http://localhost:5173/profile/" + id;
   }
 
   function handleUpdateClick(id : string){
@@ -77,7 +77,7 @@ const DataTable: React.FC = () => {
         <li>
           <a
             className="menu-btn"
-            href="/orders"
+            href="/patients"
           >
             <FontAwesomeIcon icon={faList}/>
             <span>Patients</span>
@@ -86,7 +86,7 @@ const DataTable: React.FC = () => {
         <li>
           <a
             className="menu-btn"
-            href="/cart"
+            href="/logout"
           >
             <FontAwesomeIcon icon={faSignOut}/>
             <span>Logout</span>
