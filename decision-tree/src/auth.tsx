@@ -20,7 +20,6 @@ export async function createUser(username : string, email : string, password : s
         "passwordConfirm": password,
         "name": username
     }
-
     return await pb.collection('users').create(data);
 }
 
@@ -80,4 +79,9 @@ export async function getSurveyResultByPatientId(patientId : string){
         filter: `patient='${patientId}'`,
         sort : '-created',
     })
+}
+  
+export async function addFeedBack(id : string | undefined, data : any){
+    if (id)
+        return await pb.collection('surveyResult').update(id, data);
 }

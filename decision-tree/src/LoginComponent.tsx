@@ -1,9 +1,9 @@
 import {useState} from "react";
-import {authenticateUser, createUser, pb} from "./auth.tsx";
+import {authenticateUser, createUser} from "./auth.tsx";
 
 
 export default function LoginComponent() {
-    let [authMode, setAuthMode] = useState("signin")
+    const [authMode, setAuthMode] = useState("signin")
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -18,7 +18,7 @@ export default function LoginComponent() {
             setPassword("");
             setEmail("");
             // window.location.href = "/patients";
-        });
+        }).catch((error) => console.log(error));
     }
     function handleInSubmit(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();

@@ -1,4 +1,5 @@
 export default interface Result {
+    id? : string;
     patient : string | undefined;
     date : string;
     probabilities : {a : number, b : number, c : number, d : number}

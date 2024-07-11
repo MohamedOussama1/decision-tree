@@ -11,7 +11,7 @@ interface SurveyResult {
     id : string;
     date : string;
     result : string;
-    observation : string;
+    rating : string;
 }
 
 const DataTable: React.FC = () => {
@@ -28,7 +28,7 @@ const DataTable: React.FC = () => {
                         id : item.id,
                         date : item.date,
                         result: item.result,
-                        observation: item.observation,
+                        rating: item.rating,
                 }
             })
                 setData(surveyResults);
@@ -86,7 +86,7 @@ const DataTable: React.FC = () => {
         <li>
           <a
             className="menu-btn"
-            href="/logout"
+            href="/login"
           >
             <FontAwesomeIcon icon={faSignOut}/>
             <span>Logout</span>
@@ -147,7 +147,7 @@ const DataTable: React.FC = () => {
                         <tr>
                             <th>Date</th>
                             <th>Résultat</th>
-                            <th>Observation</th>
+                            <th>Rating</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -156,7 +156,7 @@ const DataTable: React.FC = () => {
                             <tr key={index}>
                                 <td>{item.date}</td>
                                 <td>{item.result}</td>
-                                <td>{item.observation}</td>
+                                <td>{item.rating}</td>
                                 <td>
                                     <button className='btn-icon btn-trash' title='supprimer' onClick={() => handleDeleteClick(item.id, index)}>
                                         <FontAwesomeIcon icon={faTrash} />

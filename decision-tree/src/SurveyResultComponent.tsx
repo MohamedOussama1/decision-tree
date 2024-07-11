@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { Rating } from 'react-simple-star-rating'
 import { useLocation, useParams } from 'react-router-dom';
-import { addSurveyResult, getPatientById, getSurveyResultByPatientId, getSurveyResultsById } from './auth';
+import { addFeedBack, addSurveyResult, getPatientById, getSurveyResultByPatientId, getSurveyResultsById } from './auth';
 import Patient from './Patient';
 import Result from './SurveyResult';
 import './SurveyResult.css'
@@ -33,6 +34,7 @@ const SurveyResult : React.FC = () => {
                     const response = await getSurveyResultByPatientId(id);
                     const item = response.items[0];
                     const surveyResult = {
+                        id : item.id,
                         patient: item.patient,
                         date: item.date,
                         result: item.result,
@@ -48,13 +50,36 @@ const SurveyResult : React.FC = () => {
         updateFormData().then(() => console.log("useEffect"));
     }, []);
 
+
   async function handleProfileCLick(id? : string){
     if (id)
-    window.location.href = "http://localhost:5173/profile/" + id;
+      window.location.href = "http://localhost:5173/profile/" + id;
+  }
+   const handleRating = (rate: number) => {
+    setRating(rate)
   }
 
+  async function handleSubmit(){
+    surveyResult.feedback = feedback;
+    surveyResult.rating = rating;
+    const response = await addFeedBack(surveyResult.id,
+      {
+                        patient: surveyResult.patient,
+                        date: surveyResult.date,
+                        result: surveyResult.result,
+                        probabilities: surveyResult.probabilities,
+                        messages: surveyResult.messages,
+                        feedback : feedback,
+                        rating : rating
+      }
+    )
+    console.log(response);
+    window.location.href = '/profile/' + id;
+  }
 
-    const [surveyResult, setSurveyResult] = useState<Result>({
+  const [feedback, setFeedback] = useState('');
+  const [rating, setRating] = useState(0);
+  const [surveyResult, setSurveyResult] = useState<Result>({
       patient: id,
       date: formatDate(new Date()),
       result: '',
@@ -127,6 +152,20 @@ const SurveyResult : React.FC = () => {
                   <p className="card-text">
                     <strong>PAMPSI:</strong> {surveyResult.probabilities.d + " " + surveyResult.messages.d} 
                   </p>
+              <Rating
+        onClick={handleRating}
+        fillColor={"#15717e"}
+      />
+              <form onSubmit={handleSubmit}>
+                <div className="feedback-container">
+                  <textarea
+                    placeholder="Leave your feedback here..."
+                    value={feedback}
+                    onChange={(e) => setFeedback(e.target.value)}
+                  />
+                </div>
+                <button type="submit">Submit</button>
+              </form>
                     <button className='btn-icon btn-profile' title='profile' onClick={() => handleProfileCLick(patient.id)}>
                       <FontAwesomeIcon icon={faUser} />
                     </button>
