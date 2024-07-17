@@ -35,7 +35,7 @@ export async function authenticateUser(email : string, password : string) {
 // after the above you can also access the auth data from the authStore
 
 // "logout" the last authenticated account
-pb.authStore.clear();
+// pb.authStore.clear();
 
 export async function getAllPatients(){
     return await pb.collection('patient').getList(1, 50, {
@@ -43,7 +43,7 @@ export async function getAllPatients(){
     });
 }
 
-export async function getPatientById(id : string) : Promise<> {
+export async function getPatientById(id : string) {
     return await pb.collection('patient').getOne(
         id, {expand : 'firstName, lastName, city, birthDate, gender, phoneNumber, email, address, entryDate'});
 }
