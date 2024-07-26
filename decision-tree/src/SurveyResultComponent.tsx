@@ -135,26 +135,26 @@ const SurveyResult : React.FC = () => {
                 </div>
                 <div className="card-body">
                   <p className="card-text">
-                    <strong>Patient:</strong> {patient.firstName + " " + patient.lastName}
+                    <strong>{"Patient:".padEnd(26, String.fromCharCode(160))}</strong> {patient.firstName + " " + patient.lastName}
                   </p>
                   <p className="card-text">
-                    <strong>Date:</strong> {surveyResult.date}
+                    <strong>{"Date:".padEnd(28, String.fromCharCode(160))}</strong> {surveyResult.date}
                   </p>
                   <p className="card-text">
-                    <strong>PAMP Conv:</strong> {surveyResult.probabilities.a + " " + surveyResult.messages.a} 
+                    <strong>{"PAMP Conv:".padEnd(20, String.fromCharCode(160))}</strong> {surveyResult.probabilities.a + " " + surveyResult.messages.a} 
                   </p>
                   <p className="card-text">
-                    <strong>PAMP Comp:</strong> {surveyResult.probabilities.b + " " + surveyResult.messages.b} 
+                    <strong>{"PAMP Comp:".padEnd(19, String.fromCharCode(160))}</strong> {surveyResult.probabilities.b + " " + surveyResult.messages.b} 
                   </p>
                   <p className="card-text">
-                    <strong>PAMPSR:</strong> {surveyResult.probabilities.c + " " + surveyResult.messages.c} 
+                    <strong>{"PAMPSR:".padEnd(23, String.fromCharCode(160))}</strong> {surveyResult.probabilities.c + " " + surveyResult.messages.c} 
                   </p>
                   <p className="card-text">
-                    <strong>PAMPSI:</strong> {surveyResult.probabilities.d + " " + surveyResult.messages.d} 
+                    <strong>{"PAMPSI:".padEnd(24, String.fromCharCode(160))}</strong> {surveyResult.probabilities.d + " " + surveyResult.messages.d} 
                   </p>
               <Rating
         onClick={handleRating}
-        fillColor={"#15717e"}
+        fillColor={"#1638a9"}
       />
               <form onSubmit={handleSubmit}>
                 <div className="feedback-container">
@@ -164,7 +164,7 @@ const SurveyResult : React.FC = () => {
                     onChange={(e) => setFeedback(e.target.value)}
                   />
                 </div>
-                <button type="submit">Submit</button>
+                <button className="btn-submit" type="submit">Submit</button>
               </form>
                     <button className='btn-icon btn-profile' title='profile' onClick={() => handleProfileCLick(patient.id)}>
                       <FontAwesomeIcon icon={faUser} />

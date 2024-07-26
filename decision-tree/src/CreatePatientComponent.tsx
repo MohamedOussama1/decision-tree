@@ -53,6 +53,7 @@ const CreatePatient: React.FC = () => {
         }
     };
     return (
+        <div className="login-body">
         <div className="create-form-container">
             <form className="create-form" onSubmit={handleSubmit}>
                 <div className="create-form-content">
@@ -158,6 +159,7 @@ const CreatePatient: React.FC = () => {
 
             </form >
         </div >
+        </div>
     )
         ;
 }
