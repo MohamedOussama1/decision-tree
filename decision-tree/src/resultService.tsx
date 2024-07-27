@@ -1,9 +1,9 @@
 const messages = {a : "", b : "", c : "", d : ""};
-const probabilities = {a : 10, b : 10, c : 10, d : 10}
+const probabilities = {a : 100, b : 100, c : 100, d : 100}
 
 enum choices {
-  a = "a",
   b = "b",
+  a = "a",
   c = "c",
   d = "d"
 }
@@ -18,16 +18,15 @@ function updateProba(properties : choices[], message : string){
 export default function calculateResult(data : any){
   if (data.implication == 'Item 1'){
     updateProba([choices.b, choices.c, choices.d], "Implication financière moyenne");
-  }else if (data.implication != null)
-    updateProba([choices.a], "Implication financière élevé");
+  }
   if (data.hmd == 'Item 1'){
     updateProba([choices.b, choices.c, choices.d], "Hygiène, degré de motivation et disponibilité: Moyen");
   }else if (data.hmd == 'Item 2'){
-    updateProba([choices.a, choices.d], "Hygiène, degré de motivation et disponibilité: Bon");
-  }else if (data.hmd != null)
-    updateProba([choices.a], "Hygiène, degré de motivation et disponibilité: Très bon");
-  if (data.had == 'Item 1')
+    updateProba([choices.d], "Hygiène, degré de motivation et disponibilité: Bon");
+  }
+  if (data.hat == 'Item 1'){
     updateProba([choices.d], "Présence d'habitudes alco-tabagiques");
+  }
   if (data.pathologies == 'Item 2'){
     if (data.ci == 'Item 1'){
       probabilities.a += 12;

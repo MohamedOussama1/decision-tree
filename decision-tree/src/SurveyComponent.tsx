@@ -50,7 +50,6 @@ function SurveyComponent() {
         }
         if (id) {
             const result = getMaxKey(surveyData.probabilities);
-            console.log(result)
             const surveyResult = {
                 patient: id,
                 date: surveyData.date,
