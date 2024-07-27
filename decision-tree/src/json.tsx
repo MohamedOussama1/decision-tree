@@ -14,7 +14,6 @@ export const json = {
       "type": "radiogroup",
       "name": "implication",
       "title": "Implication financière",
-      "isRequired": true,
       "choices": [
        {
         "value": "Item 1",
@@ -30,7 +29,6 @@ export const json = {
       "type": "radiogroup",
       "name": "hmd",
       "title": "Hygiène, degré de motivation et disponibilité",
-      "isRequired": true,
       "choices": [
        {
         "value": "Item 1",
@@ -50,7 +48,6 @@ export const json = {
       "type": "radiogroup",
       "name": "hat",
       "title": "Habitudes alcolo-tabagiques",
-      "isRequired": true,
       "choices": [
        {
         "value": "Item 1",
@@ -72,7 +69,6 @@ export const json = {
       "type": "boolean",
       "name": "pathologies",
       "title": "Présence de pathologies",
-      "isRequired": true,
       "labelTrue": "Oui",
       "labelFalse": "Non"
      },
@@ -81,7 +77,6 @@ export const json = {
       "name": "ci",
       "visibleIf": "{pathologies} = true",
       "title": "CI",
-      "isRequired": true,
       "choices": [
        {
         "value": "Item 1",
@@ -98,7 +93,6 @@ export const json = {
       "name": "ciabs",
       "visibleIf": "{ci} = 'Item 3' and {pathologies} = true",
       "title": "CI absolues",
-      "isRequired": true,
       "choices": [
        {
         "value": "Item 1",
@@ -495,7 +489,7 @@ export const json = {
       "name": "dim",
       "title": {
        "default": "Délabrée",
-       "fr": "Dim"
+       "fr": "Oim"
       },
       "choices": [
        {
